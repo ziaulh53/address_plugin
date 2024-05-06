@@ -1,0 +1,16 @@
+{
+    "name": "practice/task",
+    "description": "Testing",
+    "autoload": {
+        "psr-4": {
+            "Practice\\Task\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "ziaulh53",
+            "email": "ziaul.siu@gmail.com"
+        }
+    ],
+    "require": {}
+}
