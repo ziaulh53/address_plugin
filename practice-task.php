@@ -15,6 +15,9 @@ if (!defined('ABSPATH')) {
  * Domain Path: /resources/languages
  */
 
+ define('PR_ADDRESS_PLUGIN_DIR', plugin_dir_path(__FILE__));
+ define('PR_ADDRESS_PLUGIN_URL', plugin_dir_url(__FILE__));
+
  require_once __DIR__ .'/vendor/autoload.php';
 
 call_user_func(function ($bootstrap) {

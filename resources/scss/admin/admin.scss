@@ -1,0 +1,29 @@
+#pr_tk_admin {
+    .layout{
+        padding-right: 20px;
+    }
+    .section-header{
+        display: flex;
+        margin-top: 20px;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .my-input-wrapper{
+        margin-bottom: 10px;
+        label{
+            display: block;
+            margin-bottom: 5px;
+        }
+        input{
+            width: 100%;
+            border-radius: 8px;
+            border: 1px solid lightgray;
+            padding: 8px 10px;
+            font-size: 16px;
+            outline: none;
+            &::placeholder{
+                color: lightgray !important;
+            }
+        }
+    }
+}
