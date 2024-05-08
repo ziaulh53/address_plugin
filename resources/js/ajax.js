@@ -1,6 +1,5 @@
 export const fetchData = async (action,data) => {
   try {
-    
     const response = await jQuery.get(ajaxurl, {action, ...data}, function(data) {
         return data;
     });
@@ -29,5 +28,17 @@ export const saveData = async (action,data) => {
         return res?.data;
     } catch (error) {
         
+    }
+  }
+
+  export const updateData = async(action,data)=>{
+    try {
+      const res = await jQuery.post(ajaxurl, {action, ...data}, function(data){
+        return data;
+      })
+
+      return res?.data;
+    } catch (error) {
+      
     }
   }
