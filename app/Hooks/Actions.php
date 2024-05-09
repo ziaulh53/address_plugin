@@ -2,6 +2,7 @@
 
 use Practice\Task\Controller\AddressController;
 use Practice\Task\Controller\ShortCodeController;
+use Practice\Task\Controller\UserPerController;
 
 // save address
 add_action('wp_ajax_pr_tk_save_address',  function(){
@@ -27,6 +28,13 @@ add_action('wp_ajax_pr_tk_update_address',function(){
 add_action('init',function(){
     AddressController::previewAddress();
 });
+
+
+//user management controller
+add_action('wp_ajax_pr_tk_get_role',function(){
+    UserPerController::getRoles();
+});
+
 
 
 // shortcode hook

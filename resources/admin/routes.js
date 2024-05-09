@@ -1,11 +1,16 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import { AddressList } from "./views";
+import { AddressList, UserManage } from "./views";
 
 const routes = [
     {
       path: "/",
       name: "home",
       component: AddressList,
+    },
+    {
+      path: "/user-manage",
+      name: "user-manage",
+      component: UserManage,
     },
   ];
 

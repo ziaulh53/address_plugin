@@ -66,6 +66,14 @@ class Application
             'dashicons-admin-settings',
             11
         );
+        add_submenu_page(
+            $this->pl_prefix . '_address',
+            'PR TK User manage',
+            'User Manage',
+            'manage_options',
+            'pr_tk_address#/user-manage',
+            array($this, 'show_address_page')
+        );
     }
 
     public function show_address_page()
@@ -78,7 +86,6 @@ class Application
         if (isset($_GET['page']) && sanitize_text_field($_GET['page']) === 'pr_tk_address') {
             Vite::enqueueScript('admin_app', 'admin/app.js', [], '1.0', true);
         }
-
         Vite::enqueueStyle('admin_app', 'scss/admin/admin.scss', [], '1.0', true);
         // ajax script
 
@@ -86,9 +93,7 @@ class Application
 
     protected function loadRequiredFiles()
     {
-        include_once PR_ADDRESS_PLUGIN_DIR .'app/Hooks/Actions.php';
-        include_once PR_ADDRESS_PLUGIN_DIR .'boot/globals.php';
-        include_once PR_ADDRESS_PLUGIN_DIR .'app/Controller/AddressController.php';
+        include_once PR_ADDRESS_PLUGIN_DIR . 'app/Hooks/Actions.php';
+        include_once PR_ADDRESS_PLUGIN_DIR . 'boot/globals.php';
     }
-
 }
