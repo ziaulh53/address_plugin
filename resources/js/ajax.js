@@ -9,7 +9,7 @@ export const fetchData = async (action,data) => {
   }
 };
 
-export const saveData = async (action,data) => {
+export const postData = async (action,data) => {
     try {
       const res = await jQuery.post(ajaxurl, {action, ...data}, function(data) {
           return data;

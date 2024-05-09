@@ -31,7 +31,7 @@
         <div style="margin-bottom: 10px;">
             <label style="display: block; margin-bottom: 5px;">All address list</label>
             <el-tag type="info" style="cursor: pointer;"
-                @click="() => onCopyHandle('[pr_tk_address_list]')">[pr_tk_address_list]
+                @click="() => onCopyHandle('[pr_tk_address]')">[pr_tk_address]
             </el-tag>
 
         </div>
@@ -40,7 +40,7 @@
             <el-tooltip class="box-item" effect="dark"
                 content="You can change the status. Available status are: active, deactive, all" placement="top">
                 <el-tag type="info" style="cursor: pointer;"
-                    @click="() => onCopyHandle('[pr_tk_address_list status=active]')">[pr_tk_address_list
+                    @click="() => onCopyHandle('[pr_tk_address status=active]')">[pr_tk_address
                     status="active"]
                 </el-tag>
             </el-tooltip>
@@ -49,9 +49,6 @@
         <template #footer>
             <div class="dialog-footer">
                 <el-button @click="shortVisible = false">Close</el-button>
-                <!-- <el-button type="primary" @click="onAddAddress" :disabled="disabled" :loading="addLoading">
-                    Confirm
-                </el-button> -->
             </div>
         </template>
     </el-dialog>
@@ -60,7 +57,7 @@
 <script setup>
 import { computed, onMounted, ref } from 'vue';
 import { AddressTable, AddressForm } from '../components/address';
-import { fetchData, saveData } from '../../js/ajax';
+import { fetchData, postData } from '../../js/ajax';
 import { onCopyHandle } from '../../js/utils';
 import { ElNotification } from 'element-plus'
 
@@ -88,7 +85,7 @@ const disabled = computed(() => !addressData.value.name || !addressData.value.co
 const onAddAddress = async () => {
     addLoading.value = true
     try {
-        const res = await saveData("pr_tk_save_address", addressData.value);
+        const res = await postData("pr_tk_save_address", addressData.value);
         if (res?.success) {
             dialogVisible.value = false;
             ElNotification.success({

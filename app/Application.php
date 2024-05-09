@@ -87,6 +87,7 @@ class Application
     protected function loadRequiredFiles()
     {
         include_once PR_ADDRESS_PLUGIN_DIR .'app/Hooks/Actions.php';
+        include_once PR_ADDRESS_PLUGIN_DIR .'boot/globals.php';
         include_once PR_ADDRESS_PLUGIN_DIR .'app/Controller/AddressController.php';
     }
 

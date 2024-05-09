@@ -44,7 +44,7 @@ class AddressController
             $status = sanitize_text_field($_GET['status']);
             global $wpdb;
             $table_name = $wpdb->prefix . self::$pl_prefix;
-    
+
             // Fetch addresses from the database based on status or return all addresses
             if ($status === 'all') {
                 $addresses = $wpdb->get_results("SELECT * FROM $table_name", ARRAY_A);
@@ -56,7 +56,18 @@ class AddressController
             }
             wp_send_json_success($addresses);
         } else {
-            wp_send_json_error(['message' => 'Status parameter is missing']);
+            wp_send_json_error(['msg' => 'Status parameter is missing']);
+        }
+    }
+
+    public static function previewAddress()
+    {
+        if (isset($_GET['pr_tk_preview']) && $id = intval($_GET['pr_tk_preview'])) {
+            $id = intval($id);
+            echo \PracticeTask\loadTemplate('preview', [
+                'id' => $id
+            ]);
+            exit;
         }
     }
 

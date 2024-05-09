@@ -24,17 +24,13 @@ add_action('wp_ajax_pr_tk_update_address',function(){
     AddressController::updateAddress();
 });
 
+add_action('init',function(){
+    AddressController::previewAddress();
+});
+
 
 // shortcode hook
 
-add_shortcode('pr_tk_address',function($atts){
-   return ShortCodeController::showSingleAddressShortcode($atts);
-});
-
-add_shortcode('pr_tk_address_list', function($atts){
+add_shortcode('pr_tk_address', function($atts){
     return ShortCodeController::showAllAddressList($atts);
 });
-
-// add_shortcode('pr_tk_address_list', function($atts){
-//     return ShortCodeController::showAllAddressList();
-// });

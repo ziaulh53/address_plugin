@@ -24,7 +24,7 @@
             <template #default="scope">
                 <el-button type="danger" :icon="Delete" @click="() => onDeleteAddress(scope.row.id)" circle />
                 <el-button type="primary" :icon="Edit" @click="() => onEditModal(scope.row)" circle />
-                <el-button type="info" :icon="View" circle />
+                <el-button type="info" :icon="View" @click="() => onPreview(scope.row.id)" circle />
             </template>
         </el-table-column>
     </el-table>
@@ -113,6 +113,11 @@ const onEditAddress = async () => {
 
     }
     editLoading.value = false;
+}
+
+const onPreview = async (id) => {
+    const previewUrl = `${window.location.origin}/wp-todo/?pr_tk_preview=${id}`;
+    window.open(previewUrl, '_blank');
 }
 
 
