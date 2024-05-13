@@ -13,7 +13,6 @@
                 Short Code
             </el-button>
         </div>
-
         <AddressTable :tableData="allAddress" :loading="loading" :fetchAddress="fetchAddress" />
     </div>
     <el-dialog v-model="dialogVisible" title="Address" width="500">
@@ -30,10 +29,8 @@
     <el-dialog v-model="shortVisible" title="Short codes" width="500">
         <div style="margin-bottom: 10px;">
             <label style="display: block; margin-bottom: 5px;">All address list</label>
-            <el-tag type="info" style="cursor: pointer;"
-                @click="() => onCopyHandle('[pr_tk_address]')">[pr_tk_address]
+            <el-tag type="info" style="cursor: pointer;" @click="() => onCopyHandle('[pr_tk_address]')">[pr_tk_address]
             </el-tag>
-
         </div>
         <div style="margin-bottom: 10px;">
             <label style="display: block; margin-bottom: 5px;">Staus</label>
@@ -44,7 +41,6 @@
                     status="active"]
                 </el-tag>
             </el-tooltip>
-
         </div>
         <template #footer>
             <div class="dialog-footer">
@@ -93,11 +89,14 @@ const onAddAddress = async () => {
                 position: 'bottom-right',
             })
             fetchAddress()
-        }
+        } 
+
     } catch (error) {
-
+        ElNotification.warning({
+            message: error?.msg,
+            position: 'bottom-right',
+        })
     }
-
     addLoading.value = false
 }
 

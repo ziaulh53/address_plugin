@@ -22,8 +22,8 @@
         </el-table-column>
         <el-table-column fixed="right" label="Actions">
             <template #default="scope">
-                <el-button type="danger" :icon="Delete" @click="() => onDeleteAddress(scope.row.id)" circle />
-                <el-button type="primary" :icon="Edit" @click="() => onEditModal(scope.row)" circle />
+                <el-button v-if="onCheckCapability('delete_address')" type="danger" :icon="Delete" @click="() => onDeleteAddress(scope.row.id)" circle />
+                <el-button v-if="onCheckCapability('edit_address')" type="primary" :icon="Edit" @click="() => onEditModal(scope.row)" circle />
                 <el-button type="info" :icon="View" @click="() => onPreview(scope.row.id)" circle />
             </template>
         </el-table-column>
@@ -56,7 +56,7 @@ import {
     View
 } from '@element-plus/icons-vue';
 import AddressForm from './AddressForm.vue';
-import { onCopyHandle } from '../../../js/utils'
+import { onCheckCapability, onCopyHandle } from '../../../js/utils'
 
 const props = defineProps({
     tableData: Array,
@@ -82,12 +82,18 @@ const onDeleteAddress = async (id) => {
                 position: 'bottom-right',
                 duration: 2000
             })
+        } else {
+            ElNotification.warning({
+                message: res?.msg,
+                position: 'bottom-right',
+            })
         }
     } catch (error) {
         console.log(error);
     }
 
 }
+
 
 const onEditModal = (data) => {
     addressData.value = {

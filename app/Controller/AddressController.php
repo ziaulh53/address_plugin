@@ -73,23 +73,28 @@ class AddressController
 
     public static function deleteAddress()
     {
-        if (isset($_POST['id'])) {
-            // Sanitize the ID
-            $id = absint($_POST['id']);
+        if (current_user_can('delete_address')) {
+            if (isset($_POST['id'])) {
 
-            global $wpdb;
-            $table_name = $wpdb->prefix . self::$pl_prefix;
+                // Sanitize the ID
+                $id = absint($_POST['id']);
 
-            // Delete the address from the database
-            $deleted = $wpdb->delete($table_name, ['id' => $id], ['%d']);
+                global $wpdb;
+                $table_name = $wpdb->prefix . self::$pl_prefix;
 
-            if ($deleted !== false) {
-                wp_send_json_success(['msg' => 'Address deleted successfully', 'success' => true]);
+                // Delete the address from the database
+                $deleted = $wpdb->delete($table_name, ['id' => $id], ['%d']);
+
+                if ($deleted !== false) {
+                    wp_send_json_success(['msg' => 'Address deleted successfully', 'success' => true]);
+                } else {
+                    wp_send_json_error(['msg' => 'Failed to delete address', 'success' => false]);
+                }
             } else {
-                wp_send_json_error(['msg' => 'Failed to delete address', 'success' => false]);
+                wp_send_json_error(['msg' => 'ID is missing']);
             }
         } else {
-            wp_send_json_error(['message' => 'ID is missing']);
+            wp_send_json_error(['msg' => 'You are not allowed!']);
         }
     }
 

@@ -39,33 +39,4 @@ class ShortCodeController
 
         return loadTemplate('AddressListTemplate', $addresses);
     }
-
-    // public static function showSingleAddressShortcode($atts)
-    // {
-    //     // Parse shortcode attributes
-    //     $atts = shortcode_atts(
-    //         array(
-    //             'id' => '',
-    //         ),
-    //         $atts,
-    //         'pr_tk_address'
-    //     );
-
-    //     // Retrieve the ID from the shortcode attributes
-    //     $id = sanitize_text_field($atts['id']);
-    //     // Fetch address details from the database based on the ID
-    //     if (!empty($id)) {
-    //         global $wpdb;
-    //         $table_name = $wpdb->prefix . self::$pl_prefix;
-    //         $address = $wpdb->get_row($wpdb->prepare("SELECT * FROM $table_name WHERE id = %d", $id), ARRAY_A);
-    //         // Check if address exists
-    //         if (!$address) {
-    //             return 'Data is not found';
-    //         }
-
-    //         return loadTemplate('AddressItemTemplate', $address);
-    //     } else {
-    //         return 'No ID provided';
-    //     }
-    // }
 }

@@ -18,3 +18,8 @@ export const onCopyHandle = (text) => {
         console.error('Clipboard API is not supported');
     }
 }
+
+export const onCheckCapability = (cap)=>{
+    const permissions = pr_tk_get_permission_list.permissions;
+    return permissions[cap];
+}

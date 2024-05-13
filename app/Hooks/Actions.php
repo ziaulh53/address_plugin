@@ -35,7 +35,9 @@ add_action('wp_ajax_pr_tk_get_role',function(){
     UserPerController::getRoles();
 });
 
-
+add_action('wp_ajax_update_capability', function (){
+    UserPerController::updateCapabilty();
+});
 
 // shortcode hook
 
